@@ -1,141 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Accountant Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>세무사 상담 및 정보 제공</title>
     <link rel="stylesheet" href="https://example.com/default-style.css">
+    <link rel="stylesheet" href="https://example.com/reset.css">
     <style>
-        :root {
-            --primary-color: #3498db;  /* 기본 색상 */
-            --secondary-color: #2ecc71;  /* 기본 보조 색상 */
-        }
-
         body {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
         }
 
-        .header, .footer {
-            background-color: var(--secondary-color);
+        .header {
+            background-color: #3498db;
+            color: #fff;
             padding: 20px;
             text-align: center;
         }
 
-        h1 {
-            color: black;
+        .section {
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        h2, ul {
-            color: blue;
+        .section:nth-of-type(odd) {
+            background-color: #ffffff;
         }
 
-        .chatbot-buttons button {
-            margin: 5px;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
+        .section:nth-of-type(even) {
+            background-color: #f0f0f0;
         }
 
-        .chatbot-frame {
-            display: none;
-            margin-top: 20px;
+        .video-wrapper {
+            margin: 20px 0;
         }
 
         iframe {
             width: 100%;
-            height: 500px;
+            height: 315px;
             border: none;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-box {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-box label {
+            font-weight: bold;
+        }
+
+        .form-box input[type="text"],
+        .form-box input[type="tel"],
+        .form-box input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>안녕하세요! 김OO세무사입니다.</h1>
-        <img src="picture.png" alt="세무사 사진" style="width:200px;height:200px;border-radius:50%;">
+        <h1>안녕하세요!</h1>
+        <h2>믿을 수 있는 김OO 세무사입니다.</h2>
     </div>
 
-    <section>
-        <h2>★세무사 프로필</h2>
-           <ul><li>국세청 20년 근무</li>
-            <li>대기업 세무팀장 20년</li></ul> 
+    <div class="section">
+        <img src="picture.png" alt="세무사 사진" style="width:150px;height:150px;border-radius:50%;">
+        <h2>김OO 세무사 프로필</h2>
+        <p>세무학 박사, 국세청 근무 20년, 대기업 세무팀장 재직 20년</p>
+    </div>
 
-    </section>
+    <div class="section">
+        <h2>세무 상담 동영상</h2>
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hXfzTfHw27s?si=U4HkOH7g3w8bwaPr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <p>국세청 세무상담 동영상입니다. 상담 전 간단히 확인해 보세요.</p>
+    </div>
 
-    <section>
-        <h2>★궁금한 사항을 챗봇에게 물어보세요</h2>
+    <div class="section">
+        <h2>2024년 10월 세무일지</h2>
+        <p>10일 근로소득 원천세 신고납부</p>
+        <p>25일 제2기 예정 부가세 신고납부</p>
+    </div>
+
+    <div class="section">
+        <!-- <h2>세무 상담 챗봇</h2>
+        <p>아래에서 상담 유형에 맞는 챗봇을 선택하여 상담을 진행하세요.</p>
         <div class="chatbot-buttons">
-            <button onclick="showChatbot('chatbot1')">법인세 문의</button>
-            <button onclick="showChatbot('chatbot2')">가업승계 상담</button>
-            <button onclick="showChatbot('chatbot3')">금융 상담</button>
-            <button onclick="showChatbot('chatbot4')">종합소득세 문의</button>
-            <button onclick="showChatbot('chatbot5')">노무 상답</button>
-            <button onclick="showChatbot('chatbot6')">가지급금 처리</button>
-            <button onclick="showChatbot('chatbot7')">기타 일반상담</button>
+            <button onclick="showChatbot('tax_chatbot')">세무상담 챗봇</button> -->
+            <!-- <button onclick="showChatbot('labor_chatbot')">노무상담 챗봇</button>
+            <button onclick="showChatbot('general_chatbot')">일반상담 챗봇</button> -->
+        <!-- </div> -->
+        <div id="tax_chatbot" class="chatbot-frame">
+            <iframe src="https://typebot.co/basic-chat-gpt" allowfullscreen></iframe>
+        </div>
+        <!-- <div id="labor_chatbot" class="chatbot-frame" style="display:none;">
+            <iframe src="https://example.com/labor_chatbot" allowfullscreen></iframe>
+        </div>
+        <div id="general_chatbot" class="chatbot-frame" style="display:none;">
+            <iframe src="https://example.com/general_chatbot" allowfullscreen></iframe>
+        </div> -->
+    </div>
 
+    <div class="section">
+        <h2>세무/노무상담 신청하기</h2>
+        <div class="form-container">
+            <form name="frm" method="post" action="https://example.com/form_handler.php" onsubmit="return submitcheck(this);">
+                <div class="form-box">
+                    <label for="v_name">이름<span class="required">*</span></label>
+                    <input type="text" name="v_name" required>
+                </div>
+                <div class="form-box">
+                    <label for="v_hp">휴대폰 번호<span class="required">*</span></label>
+                    <input type="tel" name="v_hp" required>
+                </div>
+                <div class="form-box">
+                    <label for="v_email">이메일<span class="required">*</span></label>
+                    <input type="email" name="v_email" required>
+                </div>
+                <div class="agree-form">
+                    <label>
+                        <input type="checkbox" name="agree" value="Y" required>
+                        개인정보 수집 동의
+                    </label>
+                </div>
+                <div class="submit-container">
+                    <button class="submit-button">상담 신청하기</button>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <div id="chatbot1" class="chatbot-frame">
-            <iframe src="https://typebot.co/product-recommendation-7xfxvl1"></iframe>
-        </div>
-        <div id="chatbot2" class="chatbot-frame">
-            <iframe src="https://typebot.co/lead-generation-sp50pe5"></iframe>
-        </div>
-        <div id="chatbot3" class="chatbot-frame">
-            <iframe src="https://typebot.co/skin-typology-mnlpu6c"></iframe>
-        </div>
-        <div id="chatbot4" class="chatbot-frame">
-            <iframe src="https://typebot.co/book-writing-survey"></iframe>
-        </div>
-        <div id="chatbot5" class="chatbot-frame">
-            <iframe src="https://typebot.co/crawling"></iframe>
-        </div>
-        <div id="chatbot6" class="chatbot-frame">
-            <iframe src="https://typebot.co/chatbot-marketing"></iframe>
-        </div>
-        <div id="chatbot7" class="chatbot-frame">
-            <iframe src="https://typebot.co/basic-chat-gpt"></iframe>
-        </div>                  
-    </section>
-
-    <section>
-        <h2>★2024년 10월 세무 일정</h2>
-        <ul><li>10일 근로소득 원천세 신고납부</li>
-            <li>25일 제2기 예정 부가세 신고납부</li></ul> 
-    </section>
-
-    <section>
-        <h2>★세무사 사무실 안내</h2>
-        <ul><li>주소: 서울특별시 강남구 테헤란로 123</li>
-            <li>전화번호: 02-123-4567</li></ul> 
-
-        <iframe src="https://maps.google.com/maps?q=서울특별시 강남구 테헤란로 123&output=embed" style="height:300px;"></iframe>
-    </section>
+    <div class="section">
+        <h2>사무실 위치</h2>
+        <p>서울특별시 강남구 테헤란로 123</p>
+        <iframe src="https://maps.google.com/maps?q=서울특별시 강남구 테헤란로 123&output=embed" style="width:100%; height:300px; border:none;"></iframe>
+    </div>
 
     <div class="footer">
-        <h2>© 2024 김OO 세무사. All rights reserved.</h2>
+        <p>© 2024 김OO 세무사사무소. All rights reserved.</p>
+        <p>대표 세무사: 김OO | 전화번호: 02-1234-5678</p>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const date = new Date();
-            const month = date.getMonth();  // 0부터 11까지의 값 (1월: 0, 2월: 1, ...)
-
-            // 월별 테마 색상 설정
-            const themes = [
-                { primary: "#FF5733", secondary: "#C70039" }, // 1월 테마
-                { primary: "#FFBD33", secondary: "#FF5733" }, // 2월 테마
-                { primary: "#33FF57", secondary: "#33FFBD" }, // 3월 테마
-                // ... 12개의 테마 추가
-            ];
-
-            // CSS 변수 업데이트
-            if (themes[0]) {
-                document.documentElement.style.setProperty('--primary-color', themes[3].primary);
-                document.documentElement.style.setProperty('--secondary-color', themes[3].secondary);
+        function submitcheck(frm) {
+            if (!frm.agree.checked) {
+                alert("개인정보 수집에 동의해주세요.");
+                frm.agree.focus();
+                return false;
             }
-        });
+            return true;
+        }
 
         function showChatbot(chatbotId) {
             // 모든 챗봇을 숨김
