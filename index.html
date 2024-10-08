@@ -182,8 +182,10 @@
             }
         
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwjf6DbdUThdcsWMmPrjwBvA6OcieNZ-cQZ4iIoOGx9Bjm5n2F7LeNtoKLhe6fgMRSJ/exec';
+
             const formData = new FormData(frm);
-            formData.append('timestamp', new Date().toISOString());
+            const seoulTime = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            formData.append('timestamp', seoulTime);
         
             fetch(scriptURL, {
                 method: 'POST',
