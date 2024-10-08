@@ -104,7 +104,7 @@
     <div class="section">
         <img src="picture.png" alt="세무사 사진" style="width:150px;height:150px;border-radius:50%;">
         <h2>김OO 세무사 프로필</h2>
-        <p>세무학 박사, 국세청 근무 20년, 대기업 세무팀장 재직 20년</p>
+        <p>경영컨설팅학 박사<br> 국세청 근무 20년<br> 대기업 세무팀장 재직 20년</p>
     </div>
 
     <div class="section">
@@ -112,38 +112,24 @@
         <div class="video-wrapper">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/hXfzTfHw27s?si=U4HkOH7g3w8bwaPr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <p>국세청 세무상담 동영상입니다. 상담 전 간단히 확인해 보세요.</p>
+        <p>국세청 세무상담 동영상입니다.<br>상담 전 간단히 확인해 보세요.</p>
     </div>
 
     <div class="section">
         <h2>2024년 10월 세무일지</h2>
-        <p>10일 근로소득 원천세 신고납부</p>
-        <p>25일 제2기 예정 부가세 신고납부</p>
+        <p>10일 근로소득 원천세 신고납부<br> 25일 제2기 예정 부가세 신고납부</p>
     </div>
 
     <div class="section">
-        <!-- <h2>세무 상담 챗봇</h2>
-        <p>아래에서 상담 유형에 맞는 챗봇을 선택하여 상담을 진행하세요.</p>
-        <div class="chatbot-buttons">
-            <button onclick="showChatbot('tax_chatbot')">세무상담 챗봇</button> -->
-            <!-- <button onclick="showChatbot('labor_chatbot')">노무상담 챗봇</button>
-            <button onclick="showChatbot('general_chatbot')">일반상담 챗봇</button> -->
-        <!-- </div> -->
         <div id="tax_chatbot" class="chatbot-frame">
             <iframe src="https://typebot.co/basic-chat-gpt" allowfullscreen></iframe>
         </div>
-        <!-- <div id="labor_chatbot" class="chatbot-frame" style="display:none;">
-            <iframe src="https://example.com/labor_chatbot" allowfullscreen></iframe>
-        </div>
-        <div id="general_chatbot" class="chatbot-frame" style="display:none;">
-            <iframe src="https://example.com/general_chatbot" allowfullscreen></iframe>
-        </div> -->
     </div>
 
     <div class="section">
         <h2>세무/노무상담 신청하기</h2>
         <div class="form-container">
-            <form name="frm" method="post" action="https://example.com/form_handler.php" onsubmit="return submitcheck(this);">
+            <form name="frm" onsubmit="return submitFormToGoogleSheets(this);">
                 <div class="form-box">
                     <label for="v_name">이름<span class="required">*</span></label>
                     <input type="text" name="v_name" required>
@@ -190,14 +176,33 @@
             return true;
         }
 
-        function showChatbot(chatbotId) {
-            // 모든 챗봇을 숨김
-            var chatbots = document.getElementsByClassName('chatbot-frame');
-            for (var i = 0; i < chatbots.length; i++) {
-                chatbots[i].style.display = 'none';
+        function submitFormToGoogleSheets(frm) {
+            if (!submitcheck(frm)) {
+                return false;
             }
-            // 선택된 챗봇만 표시
-            document.getElementById(chatbotId).style.display = 'block';
+        
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwjf6DbdUThdcsWMmPrjwBvA6OcieNZ-cQZ4iIoOGx9Bjm5n2F7LeNtoKLhe6fgMRSJ/exec';
+            const formData = new FormData(frm);
+            formData.append('timestamp', new Date().toISOString());
+        
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('상담 신청이 완료되었습니다.');
+                    frm.reset();
+                } else {
+                    throw new Error('서버에서 오류 응답이 발생했습니다.');
+                }
+            })
+            .catch(error => {
+                alert('오류가 발생했습니다. 다시 시도해주세요.');
+                console.error('Error!', error.message);
+            });
+        
+            return false;
         }
     </script>
 </body>
