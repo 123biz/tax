@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="https://example.com/default-style.css">
     <link rel="stylesheet" href="https://example.com/reset.css">
     <style>
+        .container {
+            max-width: 720px; /* 페이지 최대 폭을 1200px로 제한 */
+            margin: 0 auto; /* 수평 가운데 정렬 */
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -14,11 +19,6 @@
             margin: 0;
         }
 
-        .content {
-            max-width: 720px; /* 페이지 최대 폭을 750px로 제한 */
-            margin: 0 auto; /* 수평 가운데 정렬 */
-        }
-        
         .header {
             background-color: #3498db;
             color: #fff;
@@ -106,13 +106,13 @@
             <h1>안녕하세요!</h1>
             <h2>믿을 수 있는 김OO 세무사입니다.</h2>
         </div>
-    
+
         <div class="section">
             <img src="picture.png" alt="세무사 사진" style="width:150px;height:150px;border-radius:50%;">
             <h2>김OO 세무사 프로필</h2>
             <p>경영컨설팅학 박사<br> 국세청 근무 20년<br> 대기업 세무팀장 재직 20년</p>
         </div>
-    
+
         <div class="section">
             <h2>세무 상담 동영상</h2>
             <div class="video-wrapper">
@@ -120,18 +120,18 @@
             </div>
             <p>국세청 세무상담 동영상입니다.<br>상담 전 간단히 확인해 보세요.</p>
         </div>
-    
+
         <div class="section">
             <h2>2024년 10월 세무일지</h2>
             <p>10일 근로소득 원천세 신고납부<br> 25일 제2기 예정 부가세 신고납부</p>
         </div>
-    
+
         <div class="section">
             <div id="tax_chatbot" class="chatbot-frame">
                 <iframe src="https://typebot.co/basic-chat-gpt" allowfullscreen></iframe>
             </div>
         </div>
-    
+
         <div class="section">
             <h2>세무/노무상담 신청하기</h2>
             <div class="form-container">
@@ -160,18 +160,18 @@
                 </form>
             </div>
         </div>
-    
+
         <div class="section">
             <h2>사무실 위치</h2>
             <p>서울특별시 강남구 테헤란로 123</p>
             <iframe src="https://maps.google.com/maps?q=서울특별시 강남구 테헤란로 123&output=embed" style="width:100%; height:300px; border:none;"></iframe>
         </div>
-    
+
         <div class="footer">
             <p>© 2024 김OO 세무사사무소. All rights reserved.</p>
             <p>대표 세무사: 김OO | 전화번호: 02-1234-5678</p>
         </div>
-    
+
         <script>
             function submitcheck(frm) {
                 if (!frm.agree.checked) {
@@ -181,14 +181,14 @@
                 }
                 return true;
             }
-    
+
             function submitFormToGoogleSheets(frm) {
                 if (!submitcheck(frm)) {
                     return false;
                 }
             
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbwjf6DbdUThdcsWMmPrjwBvA6OcieNZ-cQZ4iIoOGx9Bjm5n2F7LeNtoKLhe6fgMRSJ/exec';
-    
+
                 const formData = new FormData(frm);
                 const seoulTime = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
                 formData.append('timestamp', seoulTime);
@@ -213,6 +213,6 @@
                 return false;
             }
         </script>
-    </div>  
+    </div>
 </body>
 </html>
